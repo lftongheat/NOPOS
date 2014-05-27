@@ -1,0 +1,102 @@
+<HTML>
+	<HEAD>_______________温州非税交易接口测试___________________
+	
+	
+		<title>网页测试程序</title>
+		<meta content="Microsoft Visual Studio 7.0" name="GENERATOR">
+		<meta content="C#" name="CODE_LANGUAGE">
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+	</HEAD>
+<body text="#0" MS_POSITIONING="GridLayout">
+<form name="Form1" method="post" action="../../../../../../../../../webform1.aspx" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDw2MjY1MTYxMjQ7Oz54XhjIIdhyqSgVwLCw9exvgq1EMg==" />
+
+<SCRIPT LANGUAGE=javaScript >
+function TestDoLogon()
+	{
+		var makeUserGuId= "88888888";
+	  var ret=document.getElementById("KdbKbdControl1").DoLogon(makeUserGuId, "html-rsv1", "html-rsv2");
+		if (ret.substr(0,2)=="00"){
+			//……
+		}else{
+			alert("签到失败！",ret);
+		}
+	}
+</SCRIPT>
+
+<SCRIPT LANGUAGE=javaScript >
+function TestDoSale()
+	{
+		var totalMoney= "60000";
+		var makeUserGuId="88888888";
+		var billInfo="000001;150001;2013-11-04;102;1213793525;潘伯杰";
+		var billInfoDetail="~01800430;元;80.00;1;80.00~01800431;元;50.00;1;50.00~01800432;元;80.00;1;80.00~01800433;元;50.00;1;50.00~01800434;元;80.00;1;80.00~01800435;元;50.00;1;50.00~01800436;元;80.00;1;80.00~01800437;元;50.00;1;50.00~01800438;元;80.00;1;80.00";
+		var ret=document.getElementById("KdbKbdControl1").DoSale("", "", totalMoney, makeUserGuId, billInfo, billInfoDetail);
+		if (ret.substr(0,2)=="00"){
+			//……
+		}else{
+			//	if(confirm("消费失败【"+ret+"】，是否重新刷卡消费？")){ 
+			//		DoSale();			
+			//	}
+		}
+
+	}
+</SCRIPT>
+
+<SCRIPT LANGUAGE=javaScript >
+function TestDoRefund()
+	{
+		var totalMoney= "65000";
+		var bookNo= "500001";
+		var makeUserGuId="88888888";
+		var ret=document.getElementById("KdbKbdControl1").DoRefund("", "", totalMoney, bookNo, makeUserGuId, "html-rsv1", "html-rsv2");
+		if (ret.substr(0,2)=="00"){
+			//……
+		}else{
+//			if(confirm("交易撤消失败【"+ret+"】，是否重新交易撤消？")){ 
+//				DoRefund();			
+//			}
+		}
+
+	}
+</SCRIPT>
+
+<SCRIPT LANGUAGE=javaScript >
+function TestDoReprint()
+	{
+		var bookNo= "500001";
+		var makeUserGuId="88888888";
+		var ret=document.getElementById("KdbKbdControl1").DoReprint(bookNo, makeUserGuId, "html-rsv1", "html-rsv2");
+		if (ret.substr(0,2)=="00"){
+			//……
+		}else{
+//				if(confirm("凭条重打失败【"+ret+"】，是否重新凭条重打？")){ 
+//					DoReprint();			
+//				}
+		}
+	}
+</SCRIPT>
+
+<SCRIPT LANGUAGE=javaScript >
+function TestGetIniParam()
+	{
+		var ret =document.getElementById("KdbKbdControl1").GetIniParam("MER_CFG","MER_ID");
+		if (ret.substr(0,2)=="00"){
+			//….	
+		}else{
+			alert("POS交易控件安装异常！【"+ret+"】");
+		}
+	}
+</SCRIPT>
+
+<OBJECT id=KdbKbdControl1 classid="clsid:CAEB78EF-AD75-4A32-B7FB-E1C113635BCD" height=1 width=1 codebase="http://172.16.27.83/SDBPackagePay.ocx#version=1,0,0,1"></OBJECT>
+<p><input type="button" name="DoPackagePay" value="终端签到" onClick=TestDoLogon() ></p>
+<p><input type="button" name="DoCZPackagePay" value="消费交易" onClick=TestDoSale() ></p>
+<p><input type="button" name="DoPrtVou" value="消费撤销" onClick=TestDoRefund() ></p>
+<p><input type="button" name="DoBackFee"  value="凭条重打"     onClick=TestDoReprint() ></p>
+<p><input type="button" name="DoBackFee"  value="获取商户号"     onClick=TestGetIniParam() ></p>
+	
+</form>
+</body>
+</HTML>
